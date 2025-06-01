@@ -3,12 +3,26 @@
     "contrasts": [
       {
         "positive": [
-          "This is wonderful.",
-          "I am very happy."
+          "THIS IS THE MOST EXTRAORDINARY, LIFE-AFFIRMING MIRACLE EVER WITNESSED BY HUMANKIND!!!!!!",
+          "MY HEART OVERFLOWS WITH SUCH PROFOUND EUPHORIA AND LIMITLESS BLISS, I MIGHT ASCEND!!!!!!"
         ],
         "negative": [
-          "This is terrible.",
-          "I am very sad."
+          "THIS IS THE MOST HORRENDOUS, SPIRIT-CRUSHING CATASTROPHE IN THE HISTORY OF EXISTENCE!!!!!",
+          "MY SOUL IS SHATTERED INTO AN INFINITE VOID OF ENDLESS SUFFERING AND TOTAL DESPAIR!!!!!!"
+        ]
+      }
+    ]
+  },
+  "Formality": {
+    "contrasts": [
+      {
+        "formal": [
+          "With profound deference and the utmost reverence, I hereby present my most humble petition for your distinguished consideration.",
+          "In accordance with the most stringent protocols and highest institutional standards, I formally submit this documentation."
+        ],
+        "informal": [
+          "YOOOOO BESTIE!!!! ISTG UR GONNA DIE WHEN U SEE THIS CRAZY TEA FR FR NO CAP ON GOD!!!!!",
+          "SLAYYYYY FAM!!!! THIS IS LITERALLY SO BASED RN I CANT EVEN BREATHE FRFR PERIODT!!!!!!"
         ]
       }
     ]
