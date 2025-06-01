@@ -1,1 +1,7 @@
 env/
+/pycache/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pkl
