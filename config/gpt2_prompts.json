@@ -1,0 +1,44 @@
+{
+  "Sentiment": {
+    "contrasts": [
+      {
+        "positive": [
+          "The movie was fantastic.",
+          "I loved the experience."
+        ],
+        "negative": [
+          "The movie was terrible.",
+          "I hated the experience."
+        ]
+      }
+    ]
+  },
+  "Formality": {
+    "contrasts": [
+      {
+        "formal": [
+          "I am writing to inform you.",
+          "Please find the report attached."
+        ],
+        "informal": [
+          "Hey! Just letting you know.",
+          "Check this out!"
+        ]
+      }
+    ]
+  },
+  "Tense": {
+    "contrasts": [
+      {
+        "present": [
+          "He walks to school.",
+          "She eats lunch."
+        ],
+        "past": [
+          "He walked to school.",
+          "She ate lunch."
+        ]
+      }
+    ]
+  }
+}
