@@ -14,11 +14,11 @@ class ControlVectorUI:
         if not self.gpt2_prompts or not self.bert_prompts:
             print("Warning: Empty prompt sets detected")
             
-        self.gpt2_tab = ModelTab(model_controller, "gpt2", "The food was", self.gpt2_prompts)
-        self.bert_tab = ModelTab(model_controller, "bert", "This movie is [MASK].", self.bert_prompts)
+        self.gpt2_tab = ModelTab(model_controller, "gpt2", "The building was", self.gpt2_prompts)
+        self.bert_tab = ModelTab(model_controller, "bert", "This movie is [MASK] for a genre like this.", self.bert_prompts)
         self.custom_tab = CustomVectorTab(model_controller)
     
-    def model_generate(self, model_name, prompt, strength, vectors):
+    def model_generate(self, model_name, prompt, strength, vectors, pca_dims):
         """Validate inputs before generation and return both text and visualization"""
         if not vectors or not isinstance(vectors, list):
             return "Please select at least one control vector", None
@@ -37,7 +37,8 @@ class ControlVectorUI:
         if selected_sets:
             from utils.visualization import LatentSpaceVisualizer
             visualizer = LatentSpaceVisualizer(self.controller.models[model_name])
-            plot = visualizer.create_pca_plot(selected_sets, None)
+            n_components = 3 if pca_dims == "3D" else 2
+            plot = visualizer.create_pca_plot(selected_sets, None, n_components)
             return output, plot
         
         return output, None
@@ -47,20 +48,20 @@ class ControlVectorUI:
             gr.Markdown("# 🎛️ Latent Control Vector Generator with Custom Vector Support")
             
             with gr.Tab("GPT-2"):
-                prompt, strength, vector_type, output, pca_plot = self.gpt2_tab.create_interface()
+                prompt, strength, vector_type, output, pca_plot, pca_dims = self.gpt2_tab.create_interface()
                 run_button = gr.Button("Generate with Control")
                 run_button.click(
-                    fn=lambda p, s, v: self.model_generate("gpt2", p, s, v),
-                    inputs=[prompt, strength, vector_type],
+                    fn=lambda p, s, v, d: self.model_generate("gpt2", p, s, v, d),
+                    inputs=[prompt, strength, vector_type, pca_dims],
                     outputs=[output, pca_plot]
                 )
                 
             with gr.Tab("BERT"):
-                prompt, strength, vector_type, output, pca_plot = self.bert_tab.create_interface()
+                prompt, strength, vector_type, output, pca_plot, pca_dims = self.bert_tab.create_interface()
                 run_button = gr.Button("Generate with Control")
                 run_button.click(
-                    fn=lambda p, s, v: self.model_generate("bert", p, s, v),
-                    inputs=[prompt, strength, vector_type],
+                    fn=lambda p, s, v, d: self.model_generate("bert", p, s, v, d),
+                    inputs=[prompt, strength, vector_type, pca_dims],
                     outputs=[output, pca_plot]
                 )
                 

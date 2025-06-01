@@ -1,30 +1,34 @@
 # Latent Control Vector Generator
 
-A web-based interface for exploring and manipulating language models' latent spaces using control vectors. This application allows users to influence text generation by combining different semantic directions in the models' hidden states.
+A web-based interface for exploring and manipulating language models' latent spaces using control vectors. This application demonstrates controlled text generation by combining multiple semantic directions in transformer model hidden states.
 
 ## Overview
 
-This application implements a method for controlling language models (GPT-2 and BERT) by:
-- Extracting semantic directions from pairs of examples
-- Combining multiple control vectors
-- Visualizing the latent space using PCA
-- Supporting custom control vector creation
+This application implements a method for controlling language models (GPT-2 and BERT) through:
+- Extraction and manipulation of semantic directions from contrastive examples
+- Dynamic combination of multiple control vectors
+- Real-time 2D/3D PCA visualization of latent spaces
+- Custom vector creation and persistence
 
 ## Features
 
-- Support for multiple models:
-  - GPT-2 (autoregressive text generation)
-  - BERT (masked language modeling)
-- Pre-defined control vectors for:
-  - Sentiment (positive/negative)
-  - Formality (formal/informal)
-  - Tense (present/past, GPT-2 only)
-- Interactive text generation with adjustable control strength
-- Real-time PCA visualization of embedding spaces
-- Custom control vector creation from user examples
-- Multi-vector combination support
+### Model Support
+- GPT-2: Autoregressive text generation with control vector injection
+- BERT: Masked language modeling with controlled token prediction
 
-## Setup
+### Pre-defined Control Dimensions
+- Sentiment (extreme positive/negative contrasts)
+- Formality (highly formal/informal language)
+- Tense (present/past, GPT-2 only)
+
+### Technical Features
+- Dynamic vector creation from contrastive examples
+- Multi-vector combination with adjustable strength
+- Interactive 2D/3D PCA visualization
+- Vector persistence and loading
+- Custom vector creation interface
+
+## Installation
 
 1. Install dependencies:
 ```bash
@@ -33,51 +37,81 @@ pip install -r requirements.txt
 
 2. Run the application:
 ```bash
-python app.py
+./run_app.sh
 ```
 
-## Usage
+## Development Guide
 
-### GPT-2 Text Generation
+### Project Structure
+```
+ControlVectorAnalysis/
+├── models/          # Model-specific implementations
+├── controllers/     # Business logic and vector management
+├── utils/          # Visualization and configuration utilities
+├── ui/             # Gradio interface components
+├── config/         # Model prompts and configurations
+└── app.py          # Application entry point
+```
 
-1. Open the "GPT-2" tab
-2. Enter a prompt (e.g., "The food was")
-3. Select one or more control vectors
-4. Adjust the control strength (-2 to +2)
-5. Click "Generate with Control"
+### Key Components
+- **Base Model Interface**: Abstract class defining vector operations
+- **Vector Controllers**: Manages vector creation and persistence
+- **PCA Visualization**: Real-time latent space visualization
+- **Config Management**: JSON-based prompt/vector configuration
 
-### BERT Masked Prediction
+### Adding New Models
+1. Implement `LanguageModel` base class
+2. Define vector extraction method
+3. Implement control injection mechanism
+4. Add model-specific prompt sets
+5. Update UI components
 
-1. Open the "BERT" tab
-2. Enter a prompt with [MASK] token (e.g., "This movie is [MASK].")
-3. Select one or more control vectors
-4. Adjust the control strength (-2 to +2)
-5. Click "Generate with Control"
+### Vector Creation Process
+1. Define contrastive example pairs
+2. Extract hidden states from model
+3. Compute difference vectors
+4. Apply during generation via forward hooks
 
-### Creating Custom Control Vectors
+## Usage Examples
 
-1. Open the "Create Custom Vector" tab
-2. Enter a name for your control vector
-3. Add positive examples (one per line)
-4. Add negative examples (one per line)
-5. Click "Save Custom Vector"
+### Basic Control
+```python
+# Generate text with sentiment control
+output = model_controller.generate_text(
+    "gpt2",
+    "The movie was",
+    ["Sentiment"],
+    strength=1.0
+)
+```
 
-### Tips
+### Custom Vector Creation
+```python
+# Create and save custom vector
+controller.create_control_vector(
+    "gpt2",
+    "CustomStyle",
+    positive_examples=["..."],
+    negative_examples=["..."]
+)
+```
 
-- Combine multiple vectors to achieve more complex effects
-- Use the PCA visualization to understand vector relationships
-- Experiment with different control strengths
-- Keep prompts simple and consistent when creating custom vectors
+## Advanced Features
 
-## Technical Details
+### PCA Visualization
+- Toggle between 2D/3D visualizations
+- Real-time vector space exploration
+- Interactive dimension reduction
 
-The application works by:
-1. Extracting hidden states from the models:
-   - Last layer for GPT-2
-   - [CLS] token embeddings for BERT
-2. Computing difference vectors between contrasting examples
-3. Injecting these vectors during generation using forward hooks
-4. Visualizing the latent space using PCA dimensionality reduction
+### Vector Combination
+- Multiple control vector selection
+- Adjustable strength (-2 to +2)
+- Dynamic vector space updates
+
+## Known Limitations
+- Model-specific vector spaces are not interchangeable
+- Control strength may need adjustment per vector
+- Custom vectors require careful example curation
 
 ## License
 

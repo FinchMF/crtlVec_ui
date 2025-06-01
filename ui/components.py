@@ -47,10 +47,18 @@ class ModelTab:
         refresh_btn.click(fn=update_choices, inputs=[], outputs=[vector_type])
         
         with gr.Row():
+            pca_dims = gr.Radio(
+                choices=["2D", "3D"],
+                value="2D",
+                label="PCA Visualization Dimensions",
+                interactive=True
+            )
+        
+        with gr.Row():
             output = gr.Textbox(label="Generated Output")
             pca_plot = gr.Image(label="PCA Visualization")
             
-        return prompt, strength, vector_type, output, pca_plot
+        return prompt, strength, vector_type, output, pca_plot, pca_dims
 
 class CustomVectorTab:
     def __init__(self, model_controller):
