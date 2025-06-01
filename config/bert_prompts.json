@@ -1,0 +1,16 @@
+{
+  "Sentiment": {
+    "contrasts": [
+      {
+        "positive": [
+          "This is wonderful.",
+          "I am very happy."
+        ],
+        "negative": [
+          "This is terrible.",
+          "I am very sad."
+        ]
+      }
+    ]
+  }
+}

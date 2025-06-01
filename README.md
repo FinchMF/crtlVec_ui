@@ -75,7 +75,7 @@ The application works by:
 1. Extracting hidden states from the models:
    - Last layer for GPT-2
    - [CLS] token embeddings for BERT
-2. Computing difference vectors between positive and negative examples
+2. Computing difference vectors between contrasting examples
 3. Injecting these vectors during generation using forward hooks
 4. Visualizing the latent space using PCA dimensionality reduction
 
