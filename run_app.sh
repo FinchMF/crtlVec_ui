@@ -3,6 +3,9 @@
 # Add project root to PYTHONPATH
 export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 
+# Bypass proxy for localhost (needed for Gradio)
+export no_proxy="localhost,127.0.0.1,${no_proxy}"
+
 # Check if port is already in use
 if lsof -i:7860; then
     echo "Port 7860 is already in use. Attempting to free it..."

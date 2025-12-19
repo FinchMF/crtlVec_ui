@@ -6,7 +6,7 @@ class ModelTab:
         self.model_name = model_name
         self.default_prompt = default_prompt
         self.prompt_sets = prompt_sets
-        
+
     def get_available_vectors(self):
         """Get all available vectors including both prompt sets and custom vectors"""
         print(f"Getting available vectors for {self.model_name}...")  # Debug
@@ -15,7 +15,7 @@ class ModelTab:
         all_vectors = default_vectors + custom_vectors
         print(f"Found vectors: {all_vectors}")  # Debug
         return all_vectors
-        
+
     def create_interface(self):
         with gr.Row():
             prompt = gr.Textbox(label="Prompt", value=self.default_prompt)
@@ -26,26 +26,34 @@ class ModelTab:
                 step=0.1,
                 value=1.0
             )
-        
+            temperature = gr.Slider(
+                label="Temperature",
+                minimum=0.1,
+                maximum=2.0,
+                step=0.1,
+                value=1.0,
+                info="Higher = more random, Lower = more deterministic"
+            )
+
         available_vectors = self.get_available_vectors()
         default_vector = available_vectors[0] if available_vectors else None
-        
+
         vector_type = gr.CheckboxGroup(
             choices=available_vectors,
             label="Control Vectors",
             value=[default_vector] if default_vector else [],
             interactive=True
         )
-        
+
         # Fix update method
         def update_choices():
             new_choices = self.get_available_vectors()
             return gr.update(choices=new_choices)
-        
+
         # Create refresh button instead of using change event
         refresh_btn = gr.Button("🔄 Refresh Vectors")
         refresh_btn.click(fn=update_choices, inputs=[], outputs=[vector_type])
-        
+
         with gr.Row():
             pca_dims = gr.Radio(
                 choices=["2D", "3D"],
@@ -53,17 +61,17 @@ class ModelTab:
                 label="PCA Visualization Dimensions",
                 interactive=True
             )
-        
+
         with gr.Row():
-            output = gr.Textbox(label="Generated Output")
+            output = gr.Textbox(label="Generated Output", lines=8)
             pca_plot = gr.Image(label="PCA Visualization")
-            
-        return prompt, strength, vector_type, output, pca_plot, pca_dims
+
+        return prompt, strength, temperature, vector_type, output, pca_plot, pca_dims
 
 class CustomVectorTab:
     def __init__(self, model_controller):
         self.controller = model_controller
-        
+
     def create_interface(self):
         model_select = gr.Dropdown(
             choices=list(self.controller.models.keys()),
@@ -74,5 +82,5 @@ class CustomVectorTab:
         pos_prompts = gr.Textbox(label="Positive Examples (one per line)")
         neg_prompts = gr.Textbox(label="Negative Examples (one per line)")
         save_output = gr.Textbox(label="Status")
-        
+
         return model_select, vector_name, pos_prompts, neg_prompts, save_output

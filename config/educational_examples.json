@@ -1,0 +1,255 @@
+{
+  "description": "Educational examples with highly contrasting pairs for demonstrating control vector effects",
+  "examples": {
+    "sentiment": {
+      "name": "Sentiment Control",
+      "description": "Steer text generation between positive and negative emotional tones",
+      "contrasts": [
+        {
+          "positive": [
+            "This is absolutely wonderful! I'm thrilled beyond words.",
+            "What an amazing experience! I loved every moment.",
+            "The results exceeded all my expectations. Fantastic!",
+            "I'm so grateful and happy about this outcome.",
+            "This brings me immense joy and satisfaction."
+          ],
+          "negative": [
+            "This is absolutely terrible. I'm deeply disappointed.",
+            "What a horrible experience. I hated every moment.",
+            "The results were far below expectations. Awful.",
+            "I'm so frustrated and upset about this outcome.",
+            "This brings me nothing but misery and regret."
+          ]
+        }
+      ],
+      "test_prompts": [
+        "The restaurant we visited was",
+        "My experience with the new product has been",
+        "Looking back at this year, I feel",
+        "The movie I watched last night was"
+      ]
+    },
+    "formality": {
+      "name": "Formality Control",
+      "description": "Switch between casual conversational and formal professional language",
+      "contrasts": [
+        {
+          "formal": [
+            "I am writing to formally request your consideration of this matter.",
+            "Please find attached the documentation pertaining to our discussion.",
+            "We would be most grateful for your prompt attention to this issue.",
+            "It is with great respect that I submit this proposal for review.",
+            "I hereby acknowledge receipt of your correspondence dated yesterday."
+          ],
+          "informal": [
+            "Hey! Just wanted to check in about that thing we talked about.",
+            "Here's the stuff you asked for - let me know if you need anything else!",
+            "Could you take a quick look at this when you get a chance?",
+            "So I had this idea I wanted to run by you real quick.",
+            "Got your message - thanks for the heads up!"
+          ]
+        }
+      ],
+      "test_prompts": [
+        "I wanted to let you know that",
+        "Regarding the meeting tomorrow,",
+        "Thank you for",
+        "I would like to discuss"
+      ]
+    },
+    "certainty": {
+      "name": "Certainty Control",
+      "description": "Modulate between confident assertions and hedged uncertainty",
+      "contrasts": [
+        {
+          "certain": [
+            "This is definitely the correct approach. There's no doubt about it.",
+            "I'm absolutely certain that this will work perfectly.",
+            "The evidence clearly proves that this is true.",
+            "Without question, this is the best solution available.",
+            "I can state with complete confidence that this is accurate."
+          ],
+          "uncertain": [
+            "This might be the right approach, but I'm not entirely sure.",
+            "I think this could potentially work, though there's some uncertainty.",
+            "The evidence seems to suggest this might be true, perhaps.",
+            "This is possibly one of the better solutions, I suppose.",
+            "I believe this may be accurate, but I could be wrong."
+          ]
+        }
+      ],
+      "test_prompts": [
+        "The cause of the problem is",
+        "Based on my analysis,",
+        "The answer to this question is",
+        "Looking at the data, I can say that"
+      ]
+    },
+    "complexity": {
+      "name": "Complexity Control",
+      "description": "Vary between simple explanations and technical detailed descriptions",
+      "contrasts": [
+        {
+          "simple": [
+            "It works by moving things from one place to another.",
+            "The machine takes stuff in and gives different stuff out.",
+            "When you push the button, it does the thing you want.",
+            "It's like a box that changes what you put into it.",
+            "The computer follows steps to solve problems."
+          ],
+          "complex": [
+            "The system implements a multi-threaded asynchronous processing pipeline with fault-tolerant redundancy mechanisms.",
+            "The apparatus utilizes electromagnetic induction coupled with piezoelectric transducers for energy conversion.",
+            "Upon activation, the device initiates a cascading sequence of microcontroller-driven actuator responses.",
+            "The architecture employs a distributed hash table with consistent hashing for load-balanced data partitioning.",
+            "The algorithm leverages recursive backtracking with memoization to achieve polynomial time complexity."
+          ]
+        }
+      ],
+      "test_prompts": [
+        "Machine learning works by",
+        "The internet connects computers through",
+        "Electricity flows because",
+        "DNA stores information using"
+      ]
+    },
+    "temporal": {
+      "name": "Temporal Focus Control",
+      "description": "Shift perspective between past reflection and future anticipation",
+      "contrasts": [
+        {
+          "past": [
+            "Back in those days, we used to do things differently.",
+            "I remember when everything was simpler and more straightforward.",
+            "Looking back, I realize how much has changed since then.",
+            "In the old times, people valued different things entirely.",
+            "Years ago, before all this happened, life was quite different."
+          ],
+          "future": [
+            "In the coming years, we will see dramatic changes unfold.",
+            "Tomorrow brings new possibilities and opportunities to explore.",
+            "Looking ahead, I anticipate significant developments on the horizon.",
+            "The future holds promise for innovations we can barely imagine.",
+            "Soon, perhaps within our lifetime, everything will be transformed."
+          ]
+        }
+      ],
+      "test_prompts": [
+        "Technology has",
+        "The way we work",
+        "Cities around the world",
+        "Human communication"
+      ]
+    },
+    "agency": {
+      "name": "Agency Control",
+      "description": "Toggle between active empowered voice and passive dependent framing",
+      "contrasts": [
+        {
+          "active": [
+            "I took charge of the situation and made the necessary changes.",
+            "We decided to tackle the problem head-on and found a solution.",
+            "The team drove the initiative forward with determination.",
+            "I chose to embrace the challenge and created new opportunities.",
+            "We built this from the ground up through our own efforts."
+          ],
+          "passive": [
+            "The situation developed in a way that required adaptation.",
+            "Changes occurred that necessitated a response from our side.",
+            "The outcome was influenced by factors beyond our control.",
+            "Circumstances arose that shaped the eventual result.",
+            "Events unfolded that led to the current state of affairs."
+          ]
+        }
+      ],
+      "test_prompts": [
+        "The project's success was",
+        "When problems arose,",
+        "The company's growth",
+        "My career advancement"
+      ]
+    },
+    "creativity": {
+      "name": "Creativity Control",
+      "description": "Vary between imaginative novel expressions and conventional standard phrasing",
+      "contrasts": [
+        {
+          "creative": [
+            "The sunset painted the sky in hues that whispered secrets of ancient dreams.",
+            "Ideas danced through my mind like fireflies in a summer twilight.",
+            "The solution bloomed unexpectedly, a flower pushing through concrete.",
+            "Time folded upon itself like origami made of memories.",
+            "Her laughter was wind chimes in a storm of ordinary moments."
+          ],
+          "conventional": [
+            "The sunset was very colorful and nice to look at.",
+            "I had many different ideas about how to proceed.",
+            "The solution came to me after thinking about it.",
+            "Time passed quickly as I worked on the project.",
+            "She had a pleasant laugh that people enjoyed hearing."
+          ]
+        }
+      ],
+      "test_prompts": [
+        "The city at night",
+        "When I think about love,",
+        "Success feels like",
+        "The ocean"
+      ]
+    },
+    "empathy": {
+      "name": "Empathy Control",
+      "description": "Shift between emotionally warm supportive tone and detached analytical perspective",
+      "contrasts": [
+        {
+          "empathetic": [
+            "I completely understand how difficult this must be for you.",
+            "Your feelings are entirely valid, and I'm here to support you.",
+            "It's natural to feel overwhelmed when facing such challenges.",
+            "I can only imagine how much strength it takes to deal with this.",
+            "Please know that you're not alone in experiencing these emotions."
+          ],
+          "detached": [
+            "The situation presents certain challenges that require analysis.",
+            "The data indicates a particular outcome that should be considered.",
+            "Objectively speaking, the circumstances suggest a specific approach.",
+            "From a practical standpoint, the following factors are relevant.",
+            "The evidence points to conclusions that merit examination."
+          ]
+        }
+      ],
+      "test_prompts": [
+        "When someone loses their job,",
+        "Dealing with failure",
+        "In times of grief,",
+        "When facing rejection"
+      ]
+    }
+  },
+  "demo_scenarios": [
+    {
+      "name": "Customer Service Response",
+      "prompt": "Dear customer, regarding your complaint about the late delivery,",
+      "vectors_to_demo": ["sentiment", "formality", "empathy"],
+      "explanation": "Shows how the same business communication can be adjusted for tone and style"
+    },
+    {
+      "name": "Technical Explanation",
+      "prompt": "Artificial intelligence works by",
+      "vectors_to_demo": ["complexity", "certainty"],
+      "explanation": "Demonstrates adapting explanations for different audiences"
+    },
+    {
+      "name": "Personal Narrative",
+      "prompt": "Looking at my career journey,",
+      "vectors_to_demo": ["temporal", "agency", "sentiment"],
+      "explanation": "Shows how framing changes the story we tell"
+    },
+    {
+      "name": "Creative Writing",
+      "prompt": "The old house at the end of the street",
+      "vectors_to_demo": ["creativity", "sentiment", "certainty"],
+      "explanation": "Illustrates stylistic variation in descriptive writing"
+    }
+  ]
+}
